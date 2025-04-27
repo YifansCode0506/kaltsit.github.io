@@ -1,0 +1,125 @@
+/* 通用样式 */
+body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+a { text-decoration: none; color: inherit; }
+h1, h2, h3 { margin: 0; }
+
+/* 顶部导航栏 */
+header {
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 120px;
+}
+nav a {
+    margin: 0 10px;
+    color: white;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  margin: 20px 50px;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #999;
+}
+
+.article-page {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fff;
+}
+
+.article-page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.article-page p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* 代码部分
+.code-container {
+  position: relative;
+  display: flex;
+  background: #2d2d2d;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 20px 0;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  font-size: 14px;
+}
+
+.code-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 45px;
+  width: 1px;
+  background: #555;
+}
+
+.code-container pre {
+  margin: 0;
+  padding: 1em 1em 1em 4em;
+  white-space: pre;
+  overflow: auto;
+  color: #f8f8f2;
+  background: #2d2d2d;
+  line-height: 1.6;
+}
+
+.line-numbers {
+  position: absolute;
+  top: 1em;
+  left: 0;
+  width: 40px;
+  text-align: right;
+  padding: 0 5px;
+  color: #888;
+  font-size: 14px;
+  line-height: 1.6;
+  user-select: none;
+  pointer-events: none;
+} */
+
+/* 图片部分 */
+img {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+}
+
+/* 底部 */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}

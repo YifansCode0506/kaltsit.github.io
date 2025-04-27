@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ -Binary Search</title>
+  <link rel="stylesheet" href="../CSS/A.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div><strong>Notes</strong></div>
+  <nav>
+    <a href="../../Main/HomePage.html">Home</a>
+    <a href="../../Main/Coding.html">Coding</a>
+    <a href="../../Main/Gallery.html">Gallery</a>
+    <a href="../../Main/About.html">About</a>
+  </nav>
+</header>
+
+<main class="article-page">
+  <nav class="breadcrumb">
+    <a href="../../Main/Coding.html">Coding</a> >
+    <a href="../Main/C++.html">C++</a> >
+    <span>Articles</span>
+  </nav>
+
+<article>
+  <h1>Binary Search</h1>
+  <p><strong>Publication Date:</strong> 2025-04-13</p>
+
+  <p>Given a sorted (ascending) integer array <code>nums</code> and a target value <code>target</code>, write a function to search for <code>target</code> within <code>nums</code>. If found, return its index; otherwise, return <code>-1</code>.</p>
+
+  <h2>Examples</h2>
+  <p><strong>Example 1:</strong><br>
+  - Input: nums=[-1,0,3,5,9,12], target=9 <br>
+  - Output: 4 <br>
+  - Explanation: 9 appears in nums and is indexed as 4
+  </p>
+
+  <p><strong>Example 2:</strong><br>
+  - Input: nums = [-1,0,3,5,9,12], target = 2 <br>
+  - Output:- one <br>
+  - Explanation: 2 does not exist in nums, therefore returns -1
+  </p>
+
+  <p><strong>Hints:</strong><br>
+  - Assume all elements in <code>nums</code> are unique.<br>
+  - <code>n</code> will be between 1 and 10000.<br>
+  - Each element will be in the range [-9999, 9999].
+  </p>
+
+  <h2>Strategy</h2>
+
+  <p><strong>This problem requires the array to be sorted and to have no duplicate elements.</strong><br>
+  When you see these two conditions, always think of binary search first.</p>
+
+  <p>Binary search is logically simple but easy to implement incorrectly, especially when handling boundaries:<br>
+  Should the loop condition be <code>while (left &lt; right)</code> or <code>while (left &lt;= right)</code>?<br>
+  Should <code>right</code> be updated to <code>middle</code> or <code>middle - 1</code>?</p>
+
+  <p>The main issue is misunderstanding the definition of the search interval. The definition is an invariant in binary search and must be preserved after each iteration.</p>
+
+  <p>There are two standard ways to define the search interval:</p>
+  <ul>
+    <li>Left-closed, right-closed: <code>[left, right]</code></li>
+    <li>Left-closed, right-open: <code>[left, right)</code></li>
+  </ul>
+
+  <p>We will explain both variations with detailed examples.</p>
+
+  <h2>First Variation: [left, right]</h2>
+
+  <p>Define the search interval as left-closed and right-closed, <code>[left, right]</code>.<br>
+  This setup requires two important considerations:</p>
+
+  <ul>
+    <li>Use <code>while (left &lt;= right)</code> because <code>left == right</code> is still a valid search space.</li>
+    <li>If <code>nums[middle] &gt; target</code>, then set <code>right = middle - 1</code>.</li>
+  </ul>
+
+  <p>Example: Searching for <code>2</code> in <code>[1,2,3,4,7,9,10]</code>:</p>
+  <img src="../../../images/draw.io/A2/M1.jpg" alt="Method 1">
+
+  <p><strong>C++ Code:</strong></p>
+  <div class="code-container">
+  <pre><code class="language-cpp">
+  class Solution {
+  public:
+      int search(vector&lt;int&gt;& nums, int target) {
+          int left = 0;
+          int right = nums.size() - 1;
+          while (left &lt;= right) {
+              int middle = left + (right - left) / 2;
+              if (nums[middle] &gt; target) {
+                  right = middle - 1;
+              } else if (nums[middle] &lt; target) {
+                  left = middle + 1;
+              } else {
+                  return middle;
+              }
+          }
+          return -1;
+      }
+  };
+  </code></pre>
+  </div>
+
+  <p>Time Complexity: <code>O(log n)</code><br>
+  Space Complexity: <code>O(1)</code></p>
+
+  <hr>
+
+  <h2>Second Variation: [left, right)</h2>
+
+  <p>Define the search interval as left-closed, right-open: <code>[left, right)</code>.</p>
+
+  <ul>
+    <li>Use <code>while (left &lt; right)</code> because when <code>left == right</code>, the search space is empty.</li>
+    <li>If <code>nums[middle] &gt; target</code>, set <code>right = middle</code>.</li>
+  </ul>
+
+  <p>Example: Searching for <code>2</code> in <code>[1,2,3,4,7,9,10]</code> (note the subtle differences compared to the first method):</p>
+  <img src="../../../images/draw.io/A2/M2.jpg" alt="Method 2">
+
+  <p><strong>C++ Code:</strong></p>
+  <div class="code-container">
+  <pre><code class="language-cpp">
+  // Version 2
+  class Solution {
+  public:
+      int search(vector&lt;int&gt;&amp; nums, int target) {
+          int left = 0;
+          int right = nums.size();
+          while (left &lt; right) {
+              int middle = left + (right - left) / 2;
+              if (nums[middle] &gt; target) {
+                  right = middle;
+              } else if (nums[middle] &lt; target) {
+                  left = middle + 1;
+              } else {
+                  return middle;
+              }
+          }
+          return -1;
+      }
+  };
+  </code></pre>
+  </div>
+
+  <p>Time Complexity: <code>O(log n)</code><br>
+  Space Complexity: <code>O(1)</code></p>
+
+  <hr>
+
+  <h2>Conclusion</h2>
+
+  <p>Binary search is fundamental, yet many find it difficult to implement correctly.</p>
+
+  <p>The key lies in understanding the definition of the search interval and maintaining the invariant throughout the loop.</p>
+
+  <p>This article explained both standard binary search variations and discussed boundary handling in detail, aiming to deepen your understanding of this critical technique.</p>
+
+</article>
+
+</main>
+
+<footer>
+  Copyright @ 2025 Code Learning Blog
+</footer>
+
+<script src="../JavaScript/A2.js"></script>
+
+</body>
+</html>

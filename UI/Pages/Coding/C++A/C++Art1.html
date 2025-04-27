@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ -Fundamentals of Array Theory</title>
+  <link rel="Stylesheet" href="../CSS/A.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+</head>
+
+<body>
+<header>
+    <div><strong>Notes</strong></div>
+    <nav>
+      <a href="../../Main/HomePage.html">Home</a>
+      <a href="../../Main/Coding.html">Coding</a>
+      <a href="../../Main/Gallery.html">Gallery</a>
+      <a href="../../Main/About.html">About</a>
+    </nav>
+</header>
+
+<main class="article-page">
+  <nav class="breadcrumb">
+    <a href="../../Main/Coding.html">Coding</a> >
+    <a href="../Main/C++.html">C++</a> >
+    <span>Articles</span>
+  </nav>
+
+  <article>
+    <h1>Fundamentals of Array Theory</h1>
+    <p>Release date: 2025-04-12</p>
+
+    <p>Arrays are one of the fundamental data structures. In coding interviews, problems involving arrays typically are not conceptually difficult but are designed to assess a candidate's ability to manage and implement code precisely.</p>
+
+    <p>In other words, while the idea might seem simple, the implementation often requires careful attention to detail.</p>
+
+
+    <p>To truly understand array-related problems, it is essential to first grasp how arrays are stored in memory.</p>
+
+
+    <p><strong>An array is a collection of elements of the same type stored in contiguous memory locations.</strong></p>
+
+    <p>Accessing elements in an array is straightforward using their index.</p>
+
+    <p>Let's take an example of a character array, illustrated as follows:</p>
+    <img src="../../../images/draw.io/Array.jpg" alt="Character Array">
+
+    <p>There are two key points to remember:</p>
+    <p>Array indices start from 0.<br>
+    Array memory addresses are contiguous.</p>
+
+    <p><strong>Because array elements are stored in contiguous memory locations, operations like inserting or deleting elements require shifting other elements accordingly.</strong></p>
+
+    <p>For instance, when deleting the element at index 3, all subsequent elements must be shifted to fill the gap, as shown below:</p>
+    <img src="../../../images/draw.io/remove_E3.jpg" alt="Remove Element 3">
+    <img src="../../../images/draw.io/After.jpg" alt="After Removal">
+    
+    <p>If you're using C++, keep in mind the difference between <code>vector</code> and <code>array</code>. The underlying structure of <code>vector</code> is based on arrays, but strictly speaking, <code>vector</code> is a container, not a raw array.</p>
+    
+    <p>In a native array, elements cannot be removed directly; they can only be overwritten.</p>
+    
+    <p>For a two-dimensional array, refer to the figure below:</p>
+    <img src="../../../images/draw.io/index.jpg" alt="2D Array Indexing">
+    
+    <p>Are the memory addresses of a two-dimensional array contiguous?</p>
+    
+    <p>In C++, they are. Different programming languages handle memory layouts differently, but in C++, a 2D array is stored in contiguous memory.</p>
+    
+    <p>Let's conduct an experiment. Here is a sample C++ code:</p>
+    <!-- 代码块展示部分 -->
+    <div class="code-container">
+      <!-- <div class="line-numbers" id="line-numbers"></div> -->
+      <pre><code class="language-cpp">
+        #include &lt;iostream&gt;
+        using namespace std;
+        
+        void test_arr() {
+            int array[2][3] = {
+                {0, 1, 2},
+                {3, 4, 5}
+            };
+            cout &lt;&lt; &array[0][0] &lt;&lt; " " &lt;&lt; &array[0][1] &lt;&lt; " " &lt;&lt; &array[0][2] &lt;&lt; endl;
+            cout &lt;&lt; &array[1][0] &lt;&lt; " " &lt;&lt; &array[1][1] &lt;&lt; " " &lt;&lt; &array[1][2] &lt;&lt; endl;
+        }
+        
+        int main() {
+            test_arr();
+        }
+    </code></pre>
+    </div>
+    
+
+    <p><strong>Sample Output:</strong></p>
+    <!-- 输出结果展示 -->
+    <div class="code-container">
+      <!-- <div class="line-numbers" id="line-numbers"></div> -->
+      <pre><code class="language-cpp">
+        0x7ffee4065820 0x7ffee4065824 0x7ffee4065828
+        0x7ffee406582c 0x7ffee4065830 0x7ffee4065834
+      </code></pre>
+    </div>
+    
+    <p>Notice that the addresses are in hexadecimal, and we can observe that the addresses are continuous.</p>
+
+    <p>Some readers might not be familiar with memory addresses. Let me briefly explain: the difference between <code>0x7ffee4065820</code> and <code>0x7ffee4065824</code> is 4 bytes, which makes sense because <code>int</code> occupies 4 bytes. Similarly, in hexadecimal arithmetic, <code>8 + 4 = c</code> (where <code>c</code> stands for 12 in decimal).</p>
+    
+    <p>Illustrated below:</p>
+    <img src="../../../images/draw.io/address.jpg" alt="Memory Address Continuity">
+    
+    <p>Thus, it is clear that in C++, a two-dimensional array occupies a contiguous block of memory.</p>
+
+    <!-- <p>未来我计划更深入地学习模板、智能指针和现代 C++（如 C++11/14/17）的新特性。</p> -->
+  </article>
+</main>
+
+  <footer>
+      Copyright @ 2025 Code Learning Blog
+  </footer>
+  <script src="../JavaScript/A1.js"></script>
+</body>
+</html>
