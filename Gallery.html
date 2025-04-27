@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mybolg</title>
+  <link rel="Stylesheet" href="CSS/Gallery.css">
+</head>
+
+<body>
+<header>
+  <div><strong>Notes</strong></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Coding.html">Coding</a>
+    <a href="Gallery.html">Gallery</a>
+    <a href="About.html">About</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="introduction">
+    <h1> Personal Project Display </h1>
+    <p>This page showcases individual and group projects completed during my undergraduate and postgraduate studies. Projects cover various fields such as front-end design, scheduling systems, and network architecture construction.</p>
+  </div>
+
+  <div class="project-block">
+    <h1> Project 1: Smart City Cyber Security Framework </h1>
+    <img src="../images/Gallery/DashBoard.jpg" alt="DashBoard">
+    <!-- <p>Brief Description: What this project accomplished, technologies used, and main features.</p> -->
+  </div>
+
+  <div class="project-details">
+    <h2>🛡️ What problem were we solving?</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>With the rapid development of smart cities, more public systems (such as waste management, traffic control, water supply, and government services) rely on the internet and IoT technologies. However, these systems also face serious cybersecurity threats, such as hackers attacking traffic systems or stealing citizen data. Our team was tasked with designing a complete cybersecurity framework to protect critical infrastructure from attacks.</p>
+    </details>
+
+    <h2>🏙️ How did we identify what needed protection?</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>We first analyzed six key systems: smart waste management, electronic toll collection (ETC), government service apps, public Wi-Fi, bus tracking systems, and smart water management. These systems handle sensitive data, such as personal information, traffic records, and water quality data. We identified key protection priorities for each system, such as preventing data tampering, leakage, and unauthorized access.</p>
+    </details>
+
+    <h2>🎯 How did we assess potential attacks?</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>We applied the STRIDE model to identify possible threats like spoofing, tampering, and denial of service attacks. This helped us understand potential attacker behaviors and design proactive defense strategies.</p>
+    </details>
+
+    <h2>🔍 How did we detect vulnerabilities?</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>We conducted vulnerability assessments, covering software bugs (like SQL injections), configuration errors, and weak passwords. We also used penetration testing tools to simulate attacks, such as bypassing login authentication and intercepting unsecured Wi-Fi traffic.</p>
+    </details>
+
+    <h2>⚠️ How did we evaluate risks?</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>We assessed all identified risks by analyzing their likelihood and impact, classifying them into high, medium, and low risk. For example, the government services platform was a top priority due to the large amount of sensitive data. Based on risk levels, we proposed four strategies: risk mitigation, transfer, acceptance, and avoidance.</p>
+    </details>
+
+    <h2>🏗️ What security framework did we build?</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>We designed a comprehensive framework based on international standards like ISO 27001 and NIST. It included access control (RBAC, MFA), data encryption, logging and monitoring, intrusion prevention, incident response, and continuous improvement mechanisms. Tools like Splunk, Metasploit, and SIEM were used to ensure security, fast recovery, and system optimization under attack scenarios.</p>
+    </details>
+  </div>
+
+  <div class="project-block2">
+    <h1> Project 2: Python Schedule </h1>
+    <img src="../images/Gallery/TimeTable.jpg" alt="TimeTable">
+    <!-- <p>Brief Description: What this project accomplished, technologies used, and main features.</p> -->
+  </div>
+
+  <div class="project-details">
+    <h2>🧭 Project Introduction and Main Functions</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>This is a <strong>command-line based schedule management tool</strong> allowing users to create, edit, view, and save personal events. It simulates a weekly timetable system, checking for event conflicts and supporting save/load operations.</p>
+      <p>Users input commands like:<br>
+        - create: create new event;<br>
+        - edit: edit existing event;<br>
+        - table: view timetable;<br>
+        - save/load: save or load database;<br>
+        - quit: exit the program (prompting to save unsaved changes).
+      </p>
+      <p>Great for practicing CLI input, flow control, and file operations.</p>
+    </details>
+
+    <h2>🧱 Data Structures and Time Processing</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>Events are stored in a list (db), with each event as a dictionary:</p>
+      <pre><code>{
+    'title': 'Meeting',
+    'start': 540, // Sunday 9:00 AM (9*60 minutes)
+    'end': 600,
+    'location': 'Room 101'
+  }</code></pre>
+      <p>- Time is stored as minutes from Sunday 0:00;<br>
+      - Users input week, hour, and minute via <code>input_time()</code>;<br>
+      - Time display uses <code>str_time()</code> and <code>str_time24()</code> for 12/24-hour formats.<br>
+      - <code>save_time()</code> and <code>load_time()</code> handle persistence.
+      </p>
+    </details>
+
+    <h2>✅ Validation and Editing Workflow</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>Event creation/editing includes validations:</p>
+      <ul>
+        <li>Title cannot be \"TODO\".</li>
+        <li>Location cannot be \"Where\".</li>
+        <li>Start time must be before end time.</li>
+        <li>No overlapping events allowed.</li>
+      </ul>
+      <p>On failure, prompts for re-entry. Actions during edit include Save, Quit, or Delete, recognized by <code>input_cmd()</code> (abbreviations supported).</p>
+    </details>
+
+    <h2>🖥️ Timetable Display and Filtering</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>Supports two views:<br>
+      1. <strong>List View</strong>: Detailed listing of events.<br>
+      2. <strong>Table View</strong>: Weekly schedule grid with time blocks.
+      </p>
+      <p>Table is generated by <code>print_table()</code> function, mapping timeslots against days.</p>
+      <p>Users can filter events by keyword, start time, or end time using <code>find_index()</code>.</p>
+    </details>
+
+    <h2>💾 File Saving and Data Persistence</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>Events are saved as CSV format:</p>
+      <pre><code>title,start_time,end_time,location</code></pre>
+      <p>Handled by <code>save_db()</code> and <code>load_db()</code> with error handling.</p>
+    </details>
+
+    <h2>🎯 Summary: Application and Future Extensions</h2>
+    <details>
+      <summary>Click to view details</summary>
+      <p>This project covers:<br>
+      - Data structures (list, dictionary);<br>
+      - String formatting;<br>
+      - Conditional flow;<br>
+      - File I/O;<br>
+      - Command-line interaction;<br>
+      - Basic time algorithms.
+      </p>
+      <p>Future improvements could include:<br>
+      - GUI (e.g., tkinter or PyQt);<br>
+      - Export to calendar files (.ics);<br>
+      - Event categories, tags, reminders.
+      </p>
+    </details>
+  </div>
+
+  <div class="project-block3">
+    <h1> Project 3: Network Architecture Implementation </h1>
+    <img src="../images/Gallery/Cisco.jpg" alt="Cisco">
+    <!-- <p>Brief Description: What this project accomplished, technologies used, and main features.</p> -->
+    <img src="../images/Gallery/physical topology.png" alt="Topology">
+    <!-- <p>Brief Description: What this project accomplished, technologies used, and main features.</p> -->
+  </div>
+
+  <div class="project-details">
+    <h2>🏫 Educational Institution Network Architecture Project</h2>
+
+    <details>
+      <summary>🎯 1. Project Background and Goals</summary>
+      <p>Designed a stable, efficient, and scalable network for an education institute with one main campus and two branches, supporting wired/wireless devices, email, and web services.</p>
+    </details>
+
+    <details>
+      <summary>🛠️ 2. Network Devices and Architecture</summary>
+      <p>Used Cisco ISR 4331 router; core switches HQMS1 and HQMS2 at the main campus; Cisco 2960 access switches at each floor. Structured cabling with Serial DTE, Straight-Through, and Crossover cables. Deployed Server-PT servers for email and web hosting.</p>
+    </details>
+
+    <details>
+      <summary>👥 3. User Roles and Service Requirements</summary>
+      <p>Users divided into Students, Teachers, Admin, and Guests with corresponding access levels.</p>
+    </details>
+
+    <details>
+      <summary>🌐 4. Topology and Connection Logic</summary>
+      <p>Three major zones: two branch campuses, main campus, public network. Core router links all zones. Redundant layers ensure high availability and scalability.</p>
+    </details>
+
+    <details>
+      <summary>🔧 5. Limitations and Scalability</summary>
+      <p>Single point of failure at core router; limited switch redundancy at branches; port expansion needed for future growth. Proposed solutions include redundancy, VLANs, ACLs, and firewalls.</p>
+    </details>
+
+    <details>
+      <summary>📋 6. Additional Info: IP Plans and Equipment Lists</summary>
+      <p>Included IP address allocation tables and device connection details for future maintenance and expansion.</p>
+    </details>
+  </div>
+
+</main>
+
+<footer>
+    Copyright @ 2025 Code Learning Blog
+</footer>
+
+</body>
+</html>
