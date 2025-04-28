@@ -45,7 +45,7 @@
     <p>Accessing elements in an array is straightforward using their index.</p>
 
     <p>Let's take an example of a character array, illustrated as follows:</p>
-    <img src="../../../images/draw.io/Array.jpg" alt="Character Array">
+    <img src="../../images/draw.io/Array.jpg" alt="Character Array">
 
     <p>There are two key points to remember:</p>
     <p>Array indices start from 0.<br>
@@ -54,15 +54,15 @@
     <p><strong>Because array elements are stored in contiguous memory locations, operations like inserting or deleting elements require shifting other elements accordingly.</strong></p>
 
     <p>For instance, when deleting the element at index 3, all subsequent elements must be shifted to fill the gap, as shown below:</p>
-    <img src="../../../images/draw.io/remove_E3.jpg" alt="Remove Element 3">
-    <img src="../../../images/draw.io/After.jpg" alt="After Removal">
+    <img src="../../images/draw.io/remove_E3.jpg" alt="Remove Element 3">
+    <img src="../../images/draw.io/After.jpg" alt="After Removal">
     
     <p>If you're using C++, keep in mind the difference between <code>vector</code> and <code>array</code>. The underlying structure of <code>vector</code> is based on arrays, but strictly speaking, <code>vector</code> is a container, not a raw array.</p>
     
     <p>In a native array, elements cannot be removed directly; they can only be overwritten.</p>
     
     <p>For a two-dimensional array, refer to the figure below:</p>
-    <img src="../../../images/draw.io/index.jpg" alt="2D Array Indexing">
+    <img src="../../images/draw.io/index.jpg" alt="2D Array Indexing">
     
     <p>Are the memory addresses of a two-dimensional array contiguous?</p>
     
@@ -107,7 +107,7 @@
     <p>Some readers might not be familiar with memory addresses. Let me briefly explain: the difference between <code>0x7ffee4065820</code> and <code>0x7ffee4065824</code> is 4 bytes, which makes sense because <code>int</code> occupies 4 bytes. Similarly, in hexadecimal arithmetic, <code>8 + 4 = c</code> (where <code>c</code> stands for 12 in decimal).</p>
     
     <p>Illustrated below:</p>
-    <img src="../../../images/draw.io/address.jpg" alt="Memory Address Continuity">
+    <img src="../../images/draw.io/address.jpg" alt="Memory Address Continuity">
     
     <p>Thus, it is clear that in C++, a two-dimensional array occupies a contiguous block of memory.</p>
 
